@@ -1,0 +1,17 @@
+// require('dotenv').config('../.env');
+const express = require('express');
+const router = require('express').Router();
+const app = express();
+const { notFoundHandler, errorHandler } = require('./error');
+app.use(router);
+app.use(require('./middleware'));
+app.use(require('./routes'));
+app.use(notFoundHandler, errorHandler);
+const myDB = require('../db/db');
+// myDB.create('Emrose', 10);
+// myDB.create('kalam', 10);
+// myDB.create('jabbar', 10);
+// myDB.create('abul', 10);
+// console.log(myDB.find());
+// console.log(myDB.findByName('kalam'));
+module.exports = app;
